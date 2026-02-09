@@ -1,0 +1,25 @@
+<!-- templates/logout.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% include 'nav.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выход из системы</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    
+    <div class="auth-container">
+        <div class="auth-form">
+            <h2>Вы успешно вышли из системы</h2>
+            <p>Спасибо за посещение нашего сайта!</p>
+            <a href="{% url 'main' %}" class="auth-btn">На главную</a>
+            <p class="auth-link">
+                <a href="{% url 'login' %}">Войти снова</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

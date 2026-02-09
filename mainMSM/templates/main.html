@@ -1,0 +1,103 @@
+<!-- templates/main.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% include 'nav.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров Sock-o-late и Dinker</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <!-- Включаем шапку -->
+    
+    <header>
+        <h1>Каталог кондитерской продукции</h1>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Продукция:</h2>
+            <ol>
+                <!-- Товар 1 -->
+                <li>
+                    <div class="product-content">
+                        <h3>Молочный шоколад "Sock-o-late"</h3>
+                        <p><strong>Состав:</strong> какао бобы, сливки, молоко сухое, сахар, какао масло, растительное масло, ванильный сахар.</p>
+                        <div class="price">249 ₽</div>
+                        
+                        <!-- Кнопка "Добавить в корзину" видна только авторизованным -->
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="1">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Товар 2 -->
+                <li>
+                    <div class="product-content">
+                        <h3>Белый шоколад "Sock-o-late Racist Edition"</h3>
+                        <p><strong>Состав:</strong> какао масло, сухое молоко сахар, ванильный сахар.</p>
+                        <div class="price">269 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="2">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Остальные товары (аналогично добавляем кнопки) -->
+                <!-- Товар 3 -->
+                <li>
+                    <div class="product-content">
+                        <h3>Батончик "Dinker Town"</h3>
+                        <p><strong>Состав:</strong> молочный шоколад, нуга, карамель, арахис.</p>
+                        <div class="price">89 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="3">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Товар 4 -->
+                <li>
+                    <div class="product-content">
+                        <h3>Батончик "Dinker Decoy"</h3>
+                        <p><strong>Состав:</strong> темный шоколад, миндаль, воздушный рис, мед.</p>
+                        <div class="price">94 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="4">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Остальные товары по аналогии -->
+                <!-- Для каждого товара добавляем условие с кнопкой -->
+                
+            </ol>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© Кондитерская компания. Все права защищены.</p>
+    </footer>
+    
+    <script>
+        // Обработка кнопок "Добавить в корзину"
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartButtons = document.querySelectorAll('.add-to-cart-btn');
+            
+            cartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-product');
+                    alert('Товар ' + productId + ' добавлен в корзину!');
+                    // Здесь можно добавить AJAX-запрос для добавления в корзину
+                });
+            });
+        });
+    </script>
+</body>
+</html>
