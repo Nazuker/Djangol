@@ -1,0 +1,163 @@
+<!-- templates/main.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% include 'nav.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров Sock-o-late и Dinker</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <!-- Включаем шапку -->
+    
+    <header>
+        <h1>Каталог кондитерской продукции</h1>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Продукция:</h2>
+            <ol>
+                <!-- Товар 1 -->
+                <li class="product-1">
+                    <div class="product-content">
+                        <h3>Молочный шоколад "Sock-o-late"</h3>
+                        <p><strong>Состав:</strong> какао бобы, сливки, молоко сухое, сахар, какао масло, растительное масло, ванильный сахар.</p>
+                        <div class="price">249 ₽</div>
+                        
+                        <!-- Кнопка "Добавить в корзину" видна только авторизованным -->
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="1">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Товар 2 -->
+                <li class="product-2">
+                    <div class="product-content">
+                        <h3>Белый шоколад "Sock-o-late Racist Edition"</h3>
+                        <p><strong>Состав:</strong> какао масло, сухое молоко сахар, ванильный сахар.</p>
+                        <div class="price">269 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="2">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Товар 3 -->
+                <li class="product-3">
+                    <div class="product-content">
+                        <h3>Батончик "Dinker Town"</h3>
+                        <p><strong>Состав:</strong> молочный шоколад, нуга, карамель, арахис.</p>
+                        <div class="price">89 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="3">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Товар 4 -->
+                <li class="product-4">
+                    <div class="product-content">
+                        <h3>Батончик "Dinker Decoy"</h3>
+                        <p><strong>Состав:</strong> темный шоколад, миндаль, воздушный рис, мед.</p>
+                        <div class="price">94 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="4">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <li class="product-5">
+                    <div class="product-content">
+                        <h3>Шоколадное яйцо "Dinker No Prize"</h3>
+                        <p><strong>Состав:</strong> фирменный молочный шоколад, карамельная начинка.</p>
+                        <div class="price">129 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="5">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Товар 6 -->
+                <li class="product-6">
+                    <div class="product-content">
+                        <h3>Мини-батончик "Dinker Credit Cards"</h3>
+                        <p><strong>Состав:</strong> вафля, карамель, фирменный белый шоколад.</p>
+                        <div class="price">59 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="6">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Товар 7 -->
+                <li class="product-7">
+                    <div class="product-content">
+                        <h3>Кекс "Dinker Toxic"</h3>
+                        <p><strong>Состав:</strong> шоколадный бисквит, кремовая начинка, фирменный молочный шоколад (глазурь).</p>
+                        <div class="price">149 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="7">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Товар 8 -->
+                <li class="product-8">
+                    <div class="product-content">
+                        <h3>Пончик "Dinker Null"</h3>
+                        <p><strong>Состав:</strong> дрожжевое тесто, сахарная глазурь, кондитерская посыпка.</p>
+                        <div class="price">79 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="8">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+                <!-- Товар 9 -->
+                <li class="product-9">
+                    <div class="product-content">
+                        <h3>Батончик "Dinker BuyElo"</h3>
+                        <p><strong>Состав:</strong> вафля, кремовая начинка, измельченный миндаль, фирменный молочный шоколад.</p>
+                        <div class="price">99 ₽</div>
+                        
+                        {% if user.is_authenticated %}
+                            <button class="add-to-cart-btn" data-product="9">Добавить в корзину</button>
+                        {% endif %}
+                    </div>
+                </li>
+                
+            </ol>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© Кондитерская компания. Все права защищены.</p>
+    </footer>
+    
+    <script>
+        // Обработка кнопок "Добавить в корзину"
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartButtons = document.querySelectorAll('.add-to-cart-btn');
+            
+            cartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-product');
+                    alert('Товар ' + productId + ' добавлен в корзину!');
+                    // Здесь можно добавить AJAX-запрос для добавления в корзину
+                });
+            });
+        });
+    </script>
+</body>
+</html>

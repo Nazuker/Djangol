@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'icon.ico' %}" type="image/x-icon">
+    <title>{% block title %}Dinker{% endblock %}</title>
+</head>
+<!-- templates/nav.html -->
+<nav class="navbar">
+    <div class="nav-container">
+        <!-- Логотип и название -->
+        <div class="nav-brand">
+            <img src="{% static 'icon.png' %}" alt="Logo" class="logo">
+            <span class="company-name">Dinker</span>
+        </div>
+        
+        <!-- Навигационная панель -->
+        <div class="nav-menu">
+            {% if user.is_authenticated %}
+                <!-- Для авторизованных пользователей -->
+                <span class="user-greeting">Привет, {{ user.username }}!</span>
+                <form method="POST" action="{% url 'logout' %}" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-btn logout-btn">Выйти</button>
+                </form>
+            {% else %}
+                <!-- Для неавторизованных пользователей -->
+                <a href="{% url 'login' %}" class="nav-btn">Войти</a>
+                <a href="{% url 'register' %}" class="nav-btn register-btn">Регистрация</a>
+            {% endif %}
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+</nav>
+</html>
